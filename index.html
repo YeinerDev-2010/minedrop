@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>MineDrop Local PRO</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="img/icon.png" type="image/png">
+</head>
+
+<body>
+
+  <!-- LOGIN / REGISTRO -->
+  <div id="pantallaLogin">
+    <h1>⛏️ MineDrop Local PRO</h1>
+    <div id="registroForm">
+      <h3>Registro</h3>
+      <input type="text" id="regNombre" placeholder="Nombre">
+      <input type="password" id="regPassword" placeholder="Contraseña">
+      <input type="file" id="regFoto" accept="image/*">
+      <button id="registroBtn">Registrarse</button>
+    </div>
+
+    <div id="loginForm">
+      <h3>Login</h3>
+      <input type="text" id="logNombre" placeholder="Nombre">
+      <input type="password" id="logPassword" placeholder="Contraseña">
+      <button id="loginBtn">Iniciar sesión</button>
+    </div>
+  </div>
+
+  <!-- PANTALLA PRINCIPAL -->
+  <div id="pantallaPrincipal" style="display:none;">
+    <button onclick="mostrarPantalla('pantallaPublicar')">Publicar Addon</button>
+    <button onclick="mostrarPantalla('pantallaPerfil')">Perfil</button>
+    <input type="text" id="buscar" placeholder="Buscar por nombre o descripción..." class="search">
+    <div class="exportImport">
+      <button onclick="exportarAddons()">Exportar Addons</button>
+      <input type="file" id="importFile" onchange="importarAddons(this.files[0])">
+    </div>
+    <div class="cards" id="cards"></div>
+  </div>
+
+  <!-- PANTALLA PUBLICAR ADDON -->
+  <div id="pantallaPublicar" style="display:none;">
+    <button onclick="mostrarPantalla('pantallaPrincipal')">Volver</button>
+    <h2>Publicar Addon</h2>
+    <input type="text" id="titulo" placeholder="Nombre del addon">
+    <select id="categoria">
+      <option value="Mods">Mods</option>
+      <option value="Shaders">Shaders</option>
+      <option value="Mapas">Mapas</option>
+      <option value="Skins">Skins</option>
+      <option value="Texturas">Texturas</option>
+      <option value="Herramientas">Herramientas</option>
+      <option value="Mini-juegos">Mini-juegos</option>
+      <option value="Mapas de aventura">Mapas de aventura</option>
+      <option value="Comandos">Comandos</option>
+      <option value="Recursos">Recursos</option>
+    </select>
+    <input type="text" id="descripcion" placeholder="Qué trae el addon (opcional)">
+    <input type="url" id="link" placeholder="Link externo (opcional)">
+    <input type="file" id="imagen">
+    <input type="file" id="archivoAddon">
+    <button id="btnPublicar">Publicar</button>
+  </div>
+
+  <!-- PANTALLA PERFIL -->
+  <div id="pantallaPerfil" style="display:none;">
+    <button onclick="mostrarPantalla('pantallaPrincipal')">Volver</button>
+    <h2>Perfil</h2>
+    <img id="avatarPerfil" src="img/default.png" width="100">
+    <p id="nombreUsuario"></p>
+    <button onclick="editarPerfil()">Editar perfil</button>
+    <button onclick="cerrarSesion()">Cerrar sesión</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
